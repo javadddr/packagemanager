@@ -95,19 +95,19 @@ export default function Pricing() {
       <Nav/>
  
     <div className={`relative bg-gray-900 isolate px-6 pt-0  lg:px-8 ${isLoaded ? 'animate-fadeIn' : 'opacity-0'}`}>
-      <div className="bg-white py-24 sm:py-32 bg-gray-900">
-        <div className="mx-auto max-w-7xl px-0 lg:px-8">
-          <div className="mx-auto max-w-2xl sm:text-center">
-            <h2 className="text-3xl font-bold tracking-tight mb-7 text-gray-100 sm:text-4xl">Simple Pricing and Full Access</h2>
-            <div class="text-center text-gray-100"><strong className='text-lime-200'>All</strong> plans include <strong className='text-lime-200'>complete</strong> access
+      <div className=" py-24 sm:py-32 bg-gray-900">
+        <div className="mx-auto max-w-7xl px-0 lg:px-8 bg-gray-900">
+          <div className="mx-auto max-w-2xl sm:text-center bg-gray-900">
+            <h2 className="text-3xl font-bold tracking-tight mb-7 text-gray-100 sm:text-4xl bg-gray-900">Simple Pricing and Full Access</h2>
+            <div class="text-center text-gray-100 bg-gray-900"><strong className='text-lime-200'>All</strong> plans include <strong className='text-lime-200'>complete</strong> access
                                 to our platform.<br></br> The only difference in pricing depends on how many shipments you
                                 would like to track.</div>
-            <p className="mt-6 text-lg leading-8 text-gray-100">
+            <p className="mt-6 text-lg leading-8 text-gray-100 bg-gray-900">
         
 
             </p>
           </div>
-          <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+          <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none bg-gray-900">
             <div className="p-8 sm:p-10 lg:flex-auto">
               <h3 className="text-2xl font-bold tracking-tight text-gray-100">What does "shipment capacity" mean?</h3>
               <div class="bg-gray-50 p-4 rounded-md shadow-sm bg-gray-900">

@@ -61,7 +61,7 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
             return;
         }
 
-        // Step 2: Login the user
+        // Step 2: Login the user with entered credentials
         const loginResponse = await fetch("https://api.globalpackagetracker.com/user/authByCredentials", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -89,12 +89,21 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
             return;
         }
 
-        // Success message and further actions
-        toast.success("Account created successfully! Redirecting...");
-        onClose(); // Close modal on successful registration
+        // Save user data and credentials
+        localStorage.setItem("token", loginData.jwt);
+        localStorage.setItem("key", loginData.key);
+        localStorage.setItem("user", JSON.stringify({
+            name: keyData.name,
+            email: keyData.email,
+            capacity: keyData.capacity,
+        }));
 
-        // Redirect to login page
-        window.location.href = "https://app.globalpackagetracker.com/login";
+        // Success message
+        toast.success("Account created and logged in successfully!");
+        onClose(); // Close modal on successful registration and login
+
+        // Redirect to the dashboard or app
+        window.location.href = "https://app.dynamopackage.com";
 
     } catch (error) {
         // Catch any fetch or other errors
@@ -103,6 +112,7 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
         setSubmitting(false); // End submission process
     }
 };
+
 
   // Button options
   const sources = [

@@ -74,7 +74,7 @@ console.log(isMenuOpen)
 
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <a className="font-light text-inherit hover:text-blue-600 text-blue-600/100" href="https://app.globalpackagetracker.com/login" target="_blank" rel="noopener noreferrer">Login</a>
+          <a className="font-light text-inherit hover:text-blue-600 text-blue-600/100" href="https://app.dynamopackage.com/login" target="_blank" rel="noopener noreferrer">Login</a>
         </NavbarItem>
      
       </NavbarContent>

@@ -49,7 +49,7 @@ console.log(isMenuOpen)
 
 
         <NavbarBrand className="-ml-26  mr-20 " >
-          <img src={logo2} alt="logo2" className="h-14 w-32 mr-1  " />
+          <img src={logo2} alt="logo2" className="h-12 w-32 mr-1  " />
           {/* <p className="font-bold text-indigo-1200 ">Global<span className="text-green-600 ">Package</span>Tracker</p> */}
         </NavbarBrand>
       </NavbarContent>

@@ -91,11 +91,11 @@ export default function Pricing1() {
   };
 
   return (
-    <div className='bg-gray-900'>
+    <div className=''>
    
  
-    <div className={`relative bg-gray-900 isolate px-6 -pt-10  lg:px-8 ${isLoaded ? 'animate-fadeIn' : 'opacity-0'}`}>
-      <div className=" py-2 sm:py-32 bg-gray-900">
+    <div className={`relative b isolate px-6 -pt-10  lg:px-8 ${isLoaded ? 'animate-fadeIn' : 'opacity-0'}`}>
+      <div className=" py-2 sm:py-32 bg-gray-900 rounded-2xl">
         <div className="mx-auto max-w-7xl px-0 lg:px-8 bg-gray-900">
           <div className="mx-auto max-w-2xl sm:text-center bg-gray-900">
             <h2 className="text-3xl font-bold tracking-tight mb-7 text-gray-100 sm:text-4xl bg-gray-900">Simple Pricing and Full Access</h2>

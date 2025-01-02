@@ -107,7 +107,7 @@ export default function Contact() {
       </div>
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contact us</h2>
-        <p className="mt-2 text-lg leading-8 text-gray-600">Or directly email us at Contact@globalpackagetracker.com</p>
+        <p className="mt-2 text-lg leading-8 text-gray-600">Or directly email us at Contact@dynamopackage.com</p>
         <p className="mt-2 text-lg leading-8 text-gray-600">Our bb response time typically ranges between 30 minutes and 3 hours.</p>
       </div>
       <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={handleFormSubmit}>

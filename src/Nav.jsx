@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Button } from "@nextui-org/react";
 
-import logo2 from "./component/d4.png";
+import logo2 from "./component/dynamologo 3.png";
 import RegisterM from "./component/RegisterM";
 export default function Nav() {
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
@@ -49,8 +49,8 @@ console.log(isMenuOpen)
 
 
         <NavbarBrand className="-ml-26  mr-20 " >
-          <img src={logo2} alt="logo2" className="h-8 w-8 mr-1 " />
-          <p className="font-bold text-indigo-1200 ">Global<span className="text-green-600 ">Package</span>Tracker</p>
+          <img src={logo2} alt="logo2" className="h-14 w-32 mr-1  " />
+          {/* <p className="font-bold text-indigo-1200 ">Global<span className="text-green-600 ">Package</span>Tracker</p> */}
         </NavbarBrand>
       </NavbarContent>
 
@@ -67,9 +67,9 @@ console.log(isMenuOpen)
        
       
         <div className="border-l border-gray-300 h-8 mx-1"></div>
-        {/* <NavbarItem>
-          <a className="font-light text-inherit hover:text-blue-600" href="/learn"  rel="noopener noreferrer" onClick={() => { trackAction('Learn more')}}>Learn more</a>
-        </NavbarItem> */}
+        <NavbarItem>
+          <Link className="font-light text-inherit hover:text-blue-600" to="/learn" >Learn more</Link>
+        </NavbarItem>
       </NavbarContent>
 
       <NavbarContent justify="end">

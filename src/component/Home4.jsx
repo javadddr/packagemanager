@@ -137,8 +137,8 @@ function Home4() {
               transition={{ delay: index * 0.1 }}
               className="w-full"
             >
-              <Card className='bg-gray-200 border border-gray-400  '>
-              <CardBody>
+              <Card className=' border border-gray-400 dark '>
+              <CardBody className='dark'>
     <div className="grid grid-cols-[30%_30%_30%_10%] gap-4">
       <div>
         <h3 className=" flex items-center">
@@ -202,7 +202,7 @@ function Home4() {
                       aria-label="Travel History"
                       title="See the travel history"
                 
-                      className="bg-gray-100 border-1 border-slate-400 pl-2 text-xs rounded-lg shadow-md "
+                      className="dark border-1 border-slate-400 pl-2 text-xs rounded-lg shadow-md "
                     >
                 {shipment.travel_history && shipment.travel_history.length > 0 ? (
                   <ol className="relative border-l border-gray-300 pl-4">

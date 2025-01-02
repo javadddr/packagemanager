@@ -110,21 +110,21 @@ export default function Pricing1() {
           <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none bg-gray-900">
             <div className="p-8 sm:p-10 lg:flex-auto bg-gray-900">
               <h3 className="text-2xl font-bold tracking-tight text-gray-100">What does "shipment capacity" mean?</h3>
-              <div class="bg-gray-50 p-4 rounded-md shadow-sm bg-gray-900">
+              <div className="bg-gray-50 p-4 rounded-md shadow-sm bg-gray-900">
 
   
-  <div class="space-y-5 ">
-    <div class="flex items-start">
-      <span class="bg-gray-300 text-gray-600 font-medium rounded-full w-24 h-9 flex justify-center items-center mr-2 text-xs">1</span>
-      <p class="text-gray-600 text-sm">
-        <span class="font-medium text-gray-400">Each unique tracking number you monitor counts as one shipment. Once a number is tracked, the duration of delivery, the number of updates requested, or how long you retain it does not impact the count—it still counts as one shipment.</span> 
+  <div className="space-y-5 ">
+    <div className="flex items-start">
+      <span className="bg-gray-300 text-gray-600 font-medium rounded-full w-24 h-9 flex justify-center items-center mr-2 text-xs">1</span>
+      <p className="text-gray-600 text-sm">
+        <span className="font-medium text-gray-400">Each unique tracking number you monitor counts as one shipment. Once a number is tracked, the duration of delivery, the number of updates requested, or how long you retain it does not impact the count—it still counts as one shipment.</span> 
       </p>
     </div>
 
-    <div class="flex items-start ">
-      <span class="bg-gray-300 text-gray-600 font-medium rounded-full w-16 h-10 flex justify-center items-center mr-2 text-xs">2</span>
-      <p class="text-gray-600 text-sm">
-        <span class="font-medium text-gray-400">All purchased shipment capacities remain valid for 12 months from the purchase date. Any unused capacity after this period will expire and reset to zero.</span> 
+    <div className="flex items-start ">
+      <span className="bg-gray-300 text-gray-600 font-medium rounded-full w-16 h-10 flex justify-center items-center mr-2 text-xs">2</span>
+      <p className="text-gray-600 text-sm">
+        <span className="font-medium text-gray-400">All purchased shipment capacities remain valid for 12 months from the purchase date. Any unused capacity after this period will expire and reset to zero.</span> 
       </p>
     </div>
 

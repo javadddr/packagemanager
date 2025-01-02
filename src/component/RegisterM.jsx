@@ -35,7 +35,6 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
   };
 
   const submit = async () => {
-    // Basic validation checks
     if (!form.email || !form.password || !form.confirmPassword) {
         toast.error("Please fill in all fields.");
         return;
@@ -45,23 +44,20 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
         return;
     }
 
-    setSubmitting(true); // Start submission process
+    setSubmitting(true);
     try {
-        // Step 1: Register the user
         const registerResponse = await fetch("https://api.globalpackagetracker.com/user/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email: form.email, password: form.password, source: "mobile" }),
+            body: JSON.stringify({ email: form.email, password: form.password, source: `Dynamo-${source}` }),
         });
         const registerData = await registerResponse.json();
 
         if (!registerResponse.ok) {
-            // Registration error
             toast.error(registerData.message || "Signup failed.");
             return;
         }
 
-        // Step 2: Login the user with entered credentials
         const loginResponse = await fetch("https://api.globalpackagetracker.com/user/authByCredentials", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -70,48 +66,19 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
         const loginData = await loginResponse.json();
 
         if (!loginResponse.ok) {
-            // Login error
             toast.error(loginData.message || "Login failed.");
             return;
         }
 
-        // Step 3: Authenticate with the key from login data
-        const keyResponse = await fetch("https://api.globalpackagetracker.com/user/authByKey", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ key: loginData.key }),
-        });
-        const keyData = await keyResponse.json();
-
-        if (!keyResponse.ok) {
-            // Key authentication error
-            toast.error(keyData.message || "Failed to fetch user details.");
-            return;
-        }
-
-        // Save user data and credentials
-        localStorage.setItem("token", loginData.jwt);
-        localStorage.setItem("key", loginData.key);
-        localStorage.setItem("user", JSON.stringify({
-            name: keyData.name,
-            email: keyData.email,
-            capacity: keyData.capacity,
-        }));
-
-        // Success message
-        toast.success("Account created and logged in successfully!");
-        onClose(); // Close modal on successful registration and login
-
-        // Redirect to the dashboard or app
-        window.location.href = "https://app.dynamopackage.com";
-
+        // Redirect to app.dynamopackage.com with the key
+        window.location.href = `https://app.dynamopackage.com/login?key=${loginData.key}`;
     } catch (error) {
-        // Catch any fetch or other errors
         toast.error("An error occurred. Please try again.");
     } finally {
-        setSubmitting(false); // End submission process
+        setSubmitting(false);
     }
 };
+
 
 
   // Button options

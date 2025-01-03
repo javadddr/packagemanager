@@ -67,9 +67,9 @@ console.log(isMenuOpen)
        
       
         <div className="border-l border-gray-300 h-8 mx-1"></div>
-        <NavbarItem>
+        {/* <NavbarItem>
           <Link className="font-light text-inherit hover:text-blue-600" to="/learn" >Learn more</Link>
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
 
       <NavbarContent justify="end">

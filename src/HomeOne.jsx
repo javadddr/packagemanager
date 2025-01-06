@@ -2,14 +2,11 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import Home from './component/Home';
 import logo1 from "./component/del.png"
-import logo2 from "./component/cre.gif"
 import logo3 from "./component/tran.gif"
 import logo4 from "./component/deli.gif"
 import logo5 from "./component/ste.gif"
-import logo6 from "./component/Ret.gif"
 import logo10 from "./component/dash.png"
-import logo11 from "./component/h3.jpg"
-import logo12 from "./component/sxasx.png"
+import logocal from "./component/cal.png"
 import Pricing1 from './Pricing1';
 import Footer from './Footer';
 import {Button,Card,CardBody} from "@nextui-org/react";
@@ -75,6 +72,7 @@ useEffect(() => {
         >
           <Home /> {/* Render your Home component */}
         </ParallaxLayer>
+        
         <ParallaxLayer
           offset={0}
           speed={0}
@@ -197,6 +195,7 @@ useEffect(() => {
   onClick={() => parallax.current.scrollTo(0)}
 >
   <Home4 /> {/* Render your Home3 component here */}
+  
 </ParallaxLayer>
 <ParallaxLayer
           offset={4} // Assuming you want this layer to be at the end, adjust the offset accordingly

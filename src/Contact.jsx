@@ -17,60 +17,54 @@ export default function Contact() {
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-
-
   const handleFormSubmit = (e) => {
-    e.preventDefault();
-  
+    e.preventDefault(); // Prevent default form submission behavior
+    
     if (!first_name || !last_name || !email || !message) {
-      return;
+      return; // Prevent submission if required fields are missing
     }
-  
+    
     setIsLoading(true);
   
-    setTimeout(() => {
-      const customerMessage = {
-        first_name,
-        last_name,
-        email,
-        phone,
-        company,
-        message,
-      };
+    const emailData = {
+      email: email,
+      subject: `Email from ${first_name} ${last_name} (${company || 'No Company'})`,
+      message: message,
+    };
   
-      console.log(customerMessage);
-  
-      fetch('https://billing.dynamofleet.com/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'key': import.meta.env.VITE_EMAIL_KEY,
-        },
-        body: JSON.stringify(customerMessage),
-      })
+    fetch(`https://api.dynamopackage.com/api/email/send-email`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(emailData),
+    })
       .then((response) => {
         if (response.ok) {
           setIsPopupVisible(true);
-          handleOpen('blur');  // Call handleOpen to open the modal
+          handleOpen("blur"); // Open modal on success
         } else {
-          console.error('Failed to send the message');
+          console.error("Failed to send the message");
         }
       })
       .catch((error) => {
-        console.error('Error occurred while sending the message:', error);
+        console.error("Error occurred while sending the message:", error);
       })
       .finally(() => {
         setIsLoading(false);
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setPhoneNumber('');
+        setCompany('');
+        setMessage('');
       });
-  
-      setFirstName('');
-      setLastName('');
-      setEmail('');
-      setPhoneNumber('');
-      setCompany('');
-      setMessage('');
-    }, 2000);
   };
+  
+
+
+
+
   
 
   useEffect(() => {
@@ -110,7 +104,7 @@ export default function Contact() {
         <p className="mt-2 text-lg leading-8 text-gray-600">Or directly email us at Contact@dynamopackage.com</p>
         <p className="mt-2 text-lg leading-8 text-gray-600">Our bb response time typically ranges between 30 minutes and 3 hours.</p>
       </div>
-      <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={handleFormSubmit}>
+      <form  method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={handleFormSubmit}>
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
             <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">First name</label>

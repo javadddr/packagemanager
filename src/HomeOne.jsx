@@ -153,16 +153,16 @@ useEffect(() => {
     justifyContent: 'center',
   }}
 >
-  <div className='font-roboto text-5xl mb-1 text-white'>Advanced Analytical Dashboard</div>
+  <div className='font-roboto text-5xl mb-1 text-white'>All of Your Packages in One Place</div>
             <Card color="primary" className="dark w-[65%] mb-3" >
               <CardBody className="flex justify-center items-center text-center text-lg  ">
-              Gain in-depth insights with a comprehensive analytical dashboard. Monitor key metrics, track trends, and visualize performance in real time. Optimize decision-making with predictive analytics and customized reports tailored to your needs.
+              Manage and monitor all your packages—shipments and returns—in one centralized location. Keep track of statuses, shipping dates, delivery dates, and even detailed travel histories, all in one convenient dashboard.
               </CardBody>
             </Card>
   <img
     src={logo13}
     style={{
-      width: '80%',
+      width: '70%',
       borderRadius: '10px', // Rounded corners
       boxShadow: 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px'
     }}

@@ -6,6 +6,7 @@ import logo3 from "./component/tran.gif"
 import logo4 from "./component/deli.gif"
 import logo5 from "./component/ste.gif"
 import logo10 from "./component/dash.png"
+import logo13 from "./component/logo13.png"
 import logocal from "./component/cal.png"
 import Pricing1 from './Pricing1';
 import Footer from './Footer';
@@ -58,7 +59,7 @@ useEffect(() => {
       </div>
    
      
-      <Parallax ref={parallax} pages={6}>
+      <Parallax ref={parallax} pages={7}>
         <ParallaxLayer offset={1} speed={1} style={{ backgroundColor: '#805E73' }} />
         <ParallaxLayer offset={2} speed={1} style={{ backgroundColor: '#87BCDE' }} />
         <ParallaxLayer
@@ -159,7 +160,7 @@ useEffect(() => {
               </CardBody>
             </Card>
   <img
-    src={logo10}
+    src={logo13}
     style={{
       width: '80%',
       borderRadius: '10px', // Rounded corners
@@ -171,6 +172,33 @@ useEffect(() => {
 
 
      
+<ParallaxLayer
+  offset={4}
+  speed={0.1}
+  onClick={() => parallax.current.scrollTo(2)}
+  style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+>
+  <div className='font-roboto text-5xl mb-1 text-white'>Advanced Analytical Dashboard</div>
+            <Card color="primary" className="dark w-[65%] mb-3" >
+              <CardBody className="flex justify-center items-center text-center text-lg  ">
+              Gain in-depth insights with a comprehensive analytical dashboard. Monitor key metrics, track trends, and visualize performance in real time. Optimize decision-making with predictive analytics and customized reports tailored to your needs.
+              </CardBody>
+            </Card>
+  <img
+    src={logo10}
+    style={{
+      width: '80%',
+      borderRadius: '10px', // Rounded corners
+      boxShadow: 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px'
+    }}
+    alt="Custom Logo"
+  />
+</ParallaxLayer>
         <ParallaxLayer
   offset={2}
   speed={-0}
@@ -198,7 +226,7 @@ useEffect(() => {
   
 </ParallaxLayer>
 <ParallaxLayer
-          offset={4} // Assuming you want this layer to be at the end, adjust the offset accordingly
+          offset={5.2} // Assuming you want this layer to be at the end, adjust the offset accordingly
           speed={0.1}
           style={{
             display: 'flex',
@@ -209,7 +237,7 @@ useEffect(() => {
           <Pricing1 /> {/* Add the Pricing component here within a new ParallaxLayer */}
         </ParallaxLayer>
         <ParallaxLayer
-        offset={5.9} // Ensure this is after all content but before the end of the page
+        offset={6.9} // Ensure this is after all content but before the end of the page
         speed={0.0}
         factor={0.1} // Make this layer shorter if you don't want it to take up the full height of a page
         style={{

@@ -50,7 +50,7 @@ const onetime = [
 
 export default function Pricing() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [selectedKey, setSelectedKey] = useState("annually");
+  const [selectedKey, setSelectedKey] = useState("");
   const [selectedPlan, setSelectedPlan] = useState(30000); 
   const [shipmentsInput, setShipmentsInput] = useState('');
   const [matchedPrice, setMatchedPrice] = useState(null);
@@ -64,15 +64,45 @@ export default function Pricing() {
     setIsLoaded(true);
   }, []);
 
+  useEffect(() => {
+    if (selectedKey) {
+      submitTextRecord(`Selected tab: ${selectedKey} -Landing Page/pricing`);
+    }
+  }, [selectedKey]);
+  
+
   const handleTabChange = (key) => {
     setSelectedKey(key);
   };
 
-  const handleSelectPlan = (planShipments) => {
-    setSelectedPlan(planShipments);
+
+
+  const handleSelectPlan = (shipments) => {
+    setSelectedPlan(shipments);
+    submitTextRecord(`Selected plan: ${shipments} shipments-Landing Page/pricing`);
   };
 
+  const submitTextRecord = async (text) => {
+    const apiUrl = "https://api.dynamopackage.com/api/textrecords";
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text }),
+      });
 
+      if (!response.ok) {
+        throw new Error(`Failed to submit text: ${response.statusText}`);
+      }
+
+      const result = await response.json();
+      console.log("Text recorded successfully:", result);
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+  };
 
   // Dynamically switch between shipmentPlans (monthly) and shipmentPlans2 (annually)
   const activePlans = selectedKey === "annually" ? shipmentPlans2 : shipmentPlans;

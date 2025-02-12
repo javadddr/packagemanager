@@ -1,12 +1,13 @@
 
 import HomeOne from './HomeOne'
-
+import Hero from './Hero';
 import Contact from "./Contact";
 import Pricing from "./Pricing";
 import LegalNotice from './LegalNotice';
 import PrivacyPolicy from './PrivacyPolicy';
 import TermsOfService from './TermsOfService';
 import Impressum from './Impressum';
+import HeroMain from './HeroMain';
 import Learn from "./Learn";
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 function App() {
@@ -16,7 +17,8 @@ function App() {
     <Router>
 
     <Routes>
-      <Route path="/" element={<HomeOne />} />
+      <Route path="/" element={<HeroMain />} />
+      {/* <Route path="/home" element={<HomeOne />} /> */}
       <Route path="/pricing" element={<Pricing />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/legal-notice" element={<LegalNotice />} />

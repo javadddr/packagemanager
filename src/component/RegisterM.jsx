@@ -95,7 +95,7 @@ console.log("colori",colori)
    <div className="dark">
       <Button color={colori}
               variant={variant}
-              className={`shadow-2xl ${wid} ${borderi?"border border-indigo-600":""} `} onPress={onOpen}>
+              className={`shadow-2xl  ${wid} ${borderi?"border border-indigo-600":""} `} onPress={onOpen}>
        {title}
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onClose} className="dark">

@@ -35,6 +35,14 @@ export default function Nav() {
   const handleSelectLink = (navButton) => {
     submitTextRecord(`Selected route: ${navButton}-Landing Page`);
   };
+  const handleSelectLink2 = (navButton) => {
+    submitTextRecord(`Login Button on Navebar`);
+  };
+  const handleSelectLink3 = (navButton) => {
+    // submitTextRecord(`Sign-Up Button on Navebar`);
+    console.log("sign up was cliked")
+  };
+
 
   const submitTextRecord = async (text) => {
     const apiUrl = "https://api.dynamopackage.com/api/textrecords";
@@ -121,7 +129,7 @@ export default function Nav() {
              
               variant="flat" 
     
-              onPress={() => handleSelectLink("Login")}
+              onPress={() => handleSelectLink2("Login")}
               className="border border-indigo-600"
             >
               <a 
@@ -137,27 +145,35 @@ export default function Nav() {
         </NavbarContent>
 
         <NavbarMenu className="bg-black/95 backdrop-blur-lg">
-          {menuItems.map((item, index) => (
-            <NavbarMenuItem
-              key={`${item.name}-${index}`}
-              onClick={() => handleMenuItemClick(item.path)}
-              className="hover:text-purple-400 cursor-pointer"
-            >
-              {item.name === "Sign Up" ? (
-                <Button 
-                  as="a" 
-                  className="bg-gradient-to-r from-purple-600 to-blue-600 text-white"
-                  href="https://www.app.dynamofleet.com/register"  
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  {item.name}
-                </Button>
-              ) : (
-                <span className="w-full text-lg text-white">{item.name}</span>
-              )}
-            </NavbarMenuItem>
-          ))}
+        {menuItems.map((item, index) => (
+  <NavbarMenuItem
+    key={`${item.name}-${index}-${item.path}`} // Ensures unique keys
+    onClick={() => {
+      handleMenuItemClick(item.path);
+      if (item.name === "Sign Up") {
+        console.log("Sign Up")
+        handleSelectLink3("Sign Up");
+      }
+    }}
+    className="hover:text-purple-400 cursor-pointer"
+  >
+    {item.name === "Sign Up" ? (
+      <Button 
+        as="a" 
+        className="bg-gradient-to-r from-purple-600 to-blue-600 text-white"
+        href={item.path}  
+        target="_blank" 
+        rel="noopener noreferrer"
+        onPress={() => handleSelectLink3("Sign Up")}
+      >
+        {item.name}
+      </Button>
+    ) : (
+      <span className="w-full text-lg text-white">{item.name}</span>
+    )}
+  </NavbarMenuItem>
+))}
+
         
         </NavbarMenu>
         <RegisterM 

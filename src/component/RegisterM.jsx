@@ -46,7 +46,7 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
 
     setSubmitting(true);
     try {
-        const registerResponse = await fetch("https://api.globalpackagetracker.com/user/register", {
+        const registerResponse = await fetch("https://api2.globalpackagetracker.com/user/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: form.email, password: form.password, source: `Dynamo-${source}` }),
@@ -58,7 +58,7 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
             return;
         }
 
-        const loginResponse = await fetch("https://api.globalpackagetracker.com/user/authByCredentials", {
+        const loginResponse = await fetch("https://api2.globalpackagetracker.com/user/authByCredentials", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: form.email, password: form.password }),
@@ -71,7 +71,7 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
         }
 
         // Redirect to app.dynamopackage.com with the key
-        window.location.href = `https://app.dynamopackage.com/login?key=${loginData.key}`;
+        window.location.href = `https://app.dynamopackage.com/`;
     } catch (error) {
         toast.error("An error occurred. Please try again.");
     } finally {
@@ -90,7 +90,7 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
     "Product Hunt",
    
   ];
-console.log("colori",colori)
+
   return (
    <div className="dark">
       <Button color={colori}

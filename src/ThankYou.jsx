@@ -69,7 +69,7 @@ function ThankYou() {
             >
               Redirecting in <span className="font-bold text-indigo-400">{countdown}</span> seconds...
             </motion.p>
-            <Progress value={(5 - countdown) * 20} color="primary" className="mb-6" />
+            <Progress value={(5 - countdown) * 20} color="warning" className="mb-6" />
             <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap" animate="pulse">
               <Button
                 color="primary"

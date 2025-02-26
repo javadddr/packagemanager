@@ -9,6 +9,7 @@ import TermsOfService from './TermsOfService';
 import Impressum from './Impressum';
 import HeroMain from './HeroMain';
 import Learn from "./Learn";
+import ThankYou from './ThankYou';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
       <Route path="/" element={<HeroMain />} />
       {/* <Route path="/home" element={<HomeOne />} /> */}
       <Route path="/pricing" element={<Pricing />} />
+      <Route path="/thankyou" element={<ThankYou />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/legal-notice" element={<LegalNotice />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />

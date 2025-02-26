@@ -15,94 +15,88 @@ import { EyeFilledIcon } from "./EyeFilledIcon";
 import { EyeSlashFilledIcon } from "./EyeSlashFilledIcon";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom"; // Added for navigation
 
-export default function RegisterM({title,borderi,colori,variant,wid}) {
+export default function RegisterM({ title, borderi, colori, variant, wid }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [form, setForm] = useState({ email: "", password: "", confirmPassword: "" });
   const [isSubmitting, setSubmitting] = useState(false);
   const [selected, setSelected] = useState("sign-up");
   const [isVisible, setVisiblePassword] = useState(false);
   const [isVisible2, setVisiblePassword2] = useState(false);
-  
-  // State to track the selected source
   const [source, setSource] = useState("");
+  const navigate = useNavigate(); // Added for redirect
 
   const toggleVisibility = () => setVisiblePassword(!isVisible);
   const toggleVisibility2 = () => setVisiblePassword2(!isVisible2);
-  
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const submit = async () => {
     if (!form.email || !form.password || !form.confirmPassword) {
-        toast.error("Please fill in all fields.");
-        return;
+      toast.error("Please fill in all fields.");
+      return;
     }
     if (form.password !== form.confirmPassword) {
-        toast.error("Passwords do not match.");
-        return;
+      toast.error("Passwords do not match.");
+      return;
     }
 
     setSubmitting(true);
     try {
-        const registerResponse = await fetch("https://api2.globalpackagetracker.com/user/register", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email: form.email, password: form.password, source: `Dynamo-${source}` }),
-        });
-        const registerData = await registerResponse.json();
+      const registerResponse = await fetch("https://api2.globalpackagetracker.com/user/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: form.email, password: form.password, source: `Dynamo-${source}` }),
+      });
+      const registerData = await registerResponse.json();
 
-        if (!registerResponse.ok) {
-            toast.error(registerData.message || "Signup failed.");
-            return;
-        }
+      if (!registerResponse.ok) {
+        toast.error(registerData.message || "Signup failed.");
+        return;
+      }
 
-        const loginResponse = await fetch("https://api2.globalpackagetracker.com/user/authByCredentials", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email: form.email, password: form.password }),
-        });
-        const loginData = await loginResponse.json();
+      const loginResponse = await fetch("https://api2.globalpackagetracker.com/user/authByCredentials", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: form.email, password: form.password }),
+      });
+      const loginData = await loginResponse.json();
 
-        if (!loginResponse.ok) {
-            toast.error(loginData.message || "Login failed.");
-            return;
-        }
+      if (!loginResponse.ok) {
+        toast.error(loginData.message || "Login failed.");
+        return;
+      }
 
-        // Redirect to app.dynamopackage.com with the key
-        window.location.href = `https://app.dynamopackage.com/`;
+      // Redirect to /thankyou instead of directly to the app
+      navigate("/thankyou", { state: { email: form.email } });
     } catch (error) {
-        toast.error("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
+      console.error("Signup error:", error); // For debugging
     } finally {
-        setSubmitting(false);
+      setSubmitting(false);
     }
-};
+  };
 
-
-
-  // Button options
-  const sources = [
-    "Google search",
-    "Google Marketplace",
-    "Other",
-    "YouTube",
-    "Product Hunt",
-   
-  ];
+  const sources = ["Google search", "Google Marketplace", "Other", "YouTube", "Product Hunt"];
 
   return (
-   <div className="dark">
-      <Button color={colori}
-              variant={variant}
-              className={`shadow-2xl  ${wid} ${borderi?"border border-indigo-600":""} `} onPress={onOpen}>
-       {title}
+    <div className="dark">
+      <Button
+        color={colori}
+        variant={variant}
+        className={`shadow-2xl ${wid} ${borderi ? "border border-indigo-600" : ""}`}
+        onPress={onOpen}
+      >
+        {title}
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onClose} className="dark">
-        <ModalContent className="pr-0 flex flex-col  w-[370px] justify-center items-center h-[570px] pt-4 dark">
+        <ModalContent className="pr-0 flex flex-col w-[370px] justify-center items-center h-[570px] pt-4 dark">
           {(onClose) => (
             <>
-              <ModalBody className="overflow-hidden dark ">
+              <ModalBody className="overflow-hidden dark">
                 <Tabs
                   fullWidth
                   size="md"
@@ -127,8 +121,8 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
                           border: "none",
                           outline: "none",
                           boxShadow: "none",
-                          color: 'white',
-                          marginTop: '0px',
+                          color: "white",
+                          marginTop: "0px",
                         }}
                       />
                       <p className="text-sm text-gray-400 -mb-3 mt-3">Password:</p>
@@ -154,8 +148,8 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
                           border: "none",
                           outline: "none",
                           boxShadow: "none",
-                          color: 'white',
-                          marginTop: '0px',
+                          color: "white",
+                          marginTop: "0px",
                         }}
                       />
                       <p className="text-sm text-gray-400 -mb-3 mt-3">Confirm Password:</p>
@@ -181,8 +175,8 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
                           border: "none",
                           outline: "none",
                           boxShadow: "none",
-                          color: 'white',
-                          marginTop: '0px',
+                          color: "white",
+                          marginTop: "0px",
                         }}
                       />
                       <p className="text-sm text-gray-400">Where did you hear about us? (Optional)</p>
@@ -195,8 +189,6 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
                             onPress={() => setSource(src)}
                             size="sm"
                             radius="sm"
-                            
-                            
                           >
                             {src}
                           </Button>
@@ -208,7 +200,7 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
                         variant="flat"
                         disabled={isSubmitting}
                         onPress={submit}
-                        className={`shadow-2xl border border-indigo-600 `}
+                        className="shadow-2xl border border-indigo-600"
                       >
                         {isSubmitting ? "Registering..." : "Register"}
                       </Button>
@@ -220,7 +212,7 @@ export default function RegisterM({title,borderi,colori,variant,wid}) {
           )}
         </ModalContent>
       </Modal>
-      <ToastContainer style={{ position: 'fixed', zIndex: 9999 }} />
+      <ToastContainer style={{ position: "fixed", zIndex: 9999 }} />
     </div>
   );
 }

@@ -208,7 +208,7 @@ export default function Pricing() {
                           style={{ fontSize: 15, width: 170,height:60 }}
                           onClick={() => handleSelectPlan(plan.shipments)}
                         >
-                          {plan.shipments} Shipments<br />{plan.price}$ 
+                          {plan.price}$ for <br /> {plan.shipments} Shipments
                         </Button>
                       ))}
 
